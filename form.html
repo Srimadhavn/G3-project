@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Input</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <form action="{{ url_for('submit_form') }}" method="post">
+        <h1>Company Information Form</h1>
+        
+        <label for="holding_name">Name of the holding / subsidiary / associate companies / joint ventures:</label>
+        <input type="text" id="holding_name" name="holding_name" required>
+
+        <label for="holding_type">Indicate whether holding / Subsidiary / Associate / Joint Venture:</label>
+        <input type="text" id="holding_type" name="holding_type" required>
+
+        <label for="shares_held">Percentage of shares held by listed entity:</label>
+        <input type="number" id="shares_held" name="shares_held" required>
+
+        <label for="br_participation">Does the entity participate in Business Responsibility initiatives? (Yes/No):</label>
+        <input type="text" id="br_participation" name="br_participation" required>
+
+        <h2>Details of complaints with regard to conflict of interest</h2>
+
+        <label for="current_year">Current Financial Year:</label>
+        <input type="number" id="current_year" name="current_year" required>
+
+        <label for="previous_year">Previous Financial Year:</label>
+        <input type="number" id="previous_year" name="previous_year" required>
+
+        <label for="current_year_complaints">Number of complaints received in relation to issues of Conflict of Interest of the Directors (Current Year):</label>
+        <input type="number" id="current_year_complaints" name="current_year_complaints" required>
+
+        <label for="previous_year_complaints">Number of complaints received in relation to issues of Conflict of Interest of the Directors (Previous Year):</label>
+        <input type="number" id="previous_year_complaints" name="previous_year_complaints" required>
+
+        <button type="submit">Submit</button>
+    </form>
+</body>
+</html>
