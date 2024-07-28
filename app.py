@@ -1,13 +1,16 @@
+import os
 from flask import Flask, render_template, request, redirect, url_for
 import mysql.connector
 
 app = Flask(__name__)
 
 db_config = {
-    'host': 'YOUR_CLOUD_DB_HOST',
-    'user': 'YOUR_CLOUD_DB_USERNAME',
-    'password': 'YOUR_CLOUD_DB_PASSWORD',
-    'database': 'YOUR_CLOUD_DB_NAME'
+    'host': os.getenv('MYSQL_HOST'),
+    'user': os.getenv('MYSQL_USER'),
+    'password': os.getenv('MYSQL_PASSWORD'),
+    'database': os.getenv('MYSQL_DB'),
+    'port': int(os.getenv('MYSQL_PORT')),
+    'ssl_ca': os.getenv('MYSQL_SSL_CA')  # Path to the CA certificate file
 }
 
 @app.route('/')
@@ -41,4 +44,5 @@ def submit_form():
     return redirect(url_for('form'))
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    port = int(os.getenv('PORT', 5000))
+    app.run(debug=True, host='0.0.0.0', port=port)
